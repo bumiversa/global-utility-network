@@ -1,5 +1,5 @@
 import { diffJson } from "./diff";
-import { parseJson } from "./parse";
+import { parseJson } from "@/lib/json/parse-json";
 import type { JsonDiffEntry } from "./types";
 
 export type JsonCompareResult =
