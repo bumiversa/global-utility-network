@@ -16,7 +16,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
   'json-diff': {
     id: 'json-diff',
     title: 'JSON Diff & Compare',
-    description: 'Compare two JSON documents structurally. Identify added, removed, and changed values instantly. 100% processed in your browser.',
+    description: 'Compare two JSON documents structurally. Identify added, removed, and changed values instantly.',
     category: 'developer',
     isClientSideOnly: true,
     relatedUtilities: ['json-formatter'],
@@ -29,6 +29,15 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     category: 'developer',
     isClientSideOnly: true,
     relatedUtilities: ['json-diff'],
+    status: 'live',
+  },
+  'jwt-inspector': {
+    id: 'jwt-inspector',
+    title: 'JWT Inspector',
+    description: 'Inspect a JSON Web Token locally in your browser. Decode header, payload, and claims without sending data to any server.',
+    category: 'developer',
+    isClientSideOnly: true,
+    relatedUtilities: ['json-diff', 'json-formatter'],
     status: 'live',
   },
 };
