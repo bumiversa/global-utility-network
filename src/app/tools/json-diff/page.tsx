@@ -2,10 +2,15 @@
 
 import { useState } from "react";
 import { compareJson } from "@/lib/json-diff/compare";
+import UtilityPage from "@/components/utility/utility-page";
+import UtilityHeader from "@/components/utility/utility-header";
+import UtilityEditor from "@/components/utility/utility-editor";
+import UtilityButton from "@/components/utility/utility-button";
+import PrivacyNotice from "@/components/utility/privacy-notice";
 
-export default function Home() {
-  const [before, setBefore] = useState('{"name":"Budi","age":30}');
-  const [after, setAfter] = useState('{"name":"Budi","age":31}');
+export default function JsonDiffPage() {
+  const [before, setBefore] = useState('');
+  const [after, setAfter] = useState('');
   const [result, setResult] = useState<ReturnType<typeof compareJson> | null>(null);
 
   function handleCompare() {
@@ -22,120 +27,80 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-white px-6 py-12 text-zinc-900">
-      <div className="mx-auto max-w-6xl">
-        <header className="mb-8">
-          <p className="mb-2 text-sm font-medium text-zinc-500">
-            Developer Utility
-          </p>
-          <h1 className="text-3xl font-semibold tracking-tight">
-            JSON Diff
-          </h1>
-          <p className="mt-2 max-w-2xl text-zinc-600">
-            Compare two JSON documents locally in your browser.
-          </p>
-        </header>
+    <UtilityPage>
+      <UtilityHeader 
+        title="JSON Diff & Compare" 
+        description="Compare two JSON documents structurally. Identify added, removed, and changed values instantly." 
+      />
 
-        <section className="grid gap-6 md:grid-cols-2">
-          <label className="block">
-            <span className="mb-2 block text-sm font-medium">JSON A</span>
-            <textarea
-              value={before}
-              onChange={(event) => setBefore(event.target.value)}
-              className="min-h-72 w-full rounded-lg border border-zinc-300 p-4 font-mono text-sm outline-none focus:border-zinc-500"
-              spellCheck={false}
-            />
-          </label>
-
-          <label className="block">
-            <span className="mb-2 block text-sm font-medium">JSON B</span>
-            <textarea
-              value={after}
-              onChange={(event) => setAfter(event.target.value)}
-              className="min-h-72 w-full rounded-lg border border-zinc-300 p-4 font-mono text-sm outline-none focus:border-zinc-500"
-              spellCheck={false}
-            />
-          </label>
-        </section>
-
-        <button
-          type="button"
-          onClick={handleCompare}
-          className="mt-6 rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-zinc-700"
-        >
-          Compare JSON
-        </button>
-
-        <div className="mt-6 rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-600">
-          <p>
-            <span className="font-medium text-zinc-900">Privacy:</span>{" "}
-            Your JSON is processed locally in your browser. This utility does not
-            upload or store the JSON you compare.
-          </p>
-          <p className="mt-2">
-            <span className="font-medium text-zinc-900">Analytics:</span>{" "}
-            We use Google Analytics to understand visits and improve this utility.
-            JSON content is not sent to Google Analytics.
-          </p>
+      <div className="space-y-6">
+        {/* Input Editors */}
+        <div className="grid gap-6 md:grid-cols-2">
+          <UtilityEditor 
+            label="JSON A (Before)" 
+            placeholder="Paste first JSON here..." 
+            value={before} 
+            onChange={(e) => setBefore(e.target.value)} 
+          />
+          <UtilityEditor 
+            label="JSON B (After)" 
+            placeholder="Paste second JSON here..." 
+            value={after} 
+            onChange={(e) => setAfter(e.target.value)} 
+          />
         </div>
 
+        {/* Results */}
         {result && (
-          <section className="mt-8 rounded-lg border border-zinc-200 p-6">
-            {result.ok ? (
-              result.entries.length === 0 ? (
-                <p className="text-zinc-600">No differences found.</p>
-              ) : (
-                <div className="space-y-3">
-                  <h2 className="font-semibold">
-                    {result.entries.length} difference
-                    {result.entries.length === 1 ? "" : "s"}
-                  </h2>
+          <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6">
+            {!result.ok ? (
+              <p className="text-sm text-red-600">{result.error}</p>
+            ) : result.entries.length === 0 ? (
+              <p className="text-sm text-zinc-600">No differences found.</p>
+            ) : (
+              <div className="space-y-4">
+                <h2 className="text-base font-semibold text-zinc-900">
+                  {result.entries.length} difference{result.entries.length === 1 ? "" : "s"} found
+                </h2>
 
-                  {result.entries.map((entry, index) => (
-                    <div
-                      key={`${entry.path}-${entry.kind}-${index}`}
-                      className="rounded-md bg-zinc-50 p-4"
-                    >
-                      <div className="flex flex-wrap items-center gap-3 text-sm">
-                        <span className="font-mono">{entry.path}</span>
-                        <span className="text-zinc-500">{entry.kind}</span>
+                {result.entries.map((entry, index) => (
+                  <div key={`${entry.path}-${entry.kind}-${index}`} className="rounded-lg bg-white p-4 shadow-sm">
+                    <div className="flex items-center gap-3 text-sm">
+                      <span className="font-mono font-medium text-zinc-900">{entry.path || "root"}</span>
+                      <span className="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium uppercase text-zinc-600">
+                        {entry.kind}
+                      </span>
+                    </div>
+
+                    <div className="mt-3 grid gap-4 md:grid-cols-2">
+                      <div>
+                        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-zinc-500">Before</p>
+                        <pre className="overflow-x-auto rounded-md bg-zinc-50 p-3 text-xs font-mono">
+                          {entry.before === undefined ? "-" : JSON.stringify(entry.before, null, 2)}
+                        </pre>
                       </div>
 
-                      <div className="mt-3 grid gap-3 md:grid-cols-2">
-                        <div>
-                          <p className="mb-1 text-xs font-medium uppercase tracking-wide text-zinc-500">
-                            Before
-                          </p>
-                          <pre className="overflow-x-auto rounded-md bg-zinc-100 p-3 text-sm">
-                            {entry.before === undefined
-                              ? "-"
-                              : JSON.stringify(entry.before, null, 2)}
-                          </pre>
-                        </div>
-
-                        <div>
-                          <p className="mb-1 text-xs font-medium uppercase tracking-wide text-zinc-500">
-                            After
-                          </p>
-                          <pre className="overflow-x-auto rounded-md bg-zinc-100 p-3 text-sm">
-                            {entry.after === undefined
-                              ? "-"
-                              : JSON.stringify(entry.after, null, 2)}
-                          </pre>
-                        </div>
+                      <div>
+                        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-zinc-500">After</p>
+                        <pre className="overflow-x-auto rounded-md bg-zinc-50 p-3 text-xs font-mono">
+                          {entry.after === undefined ? "-" : JSON.stringify(entry.after, null, 2)}
+                        </pre>
                       </div>
                     </div>
-                  ))}
-                </div>
-              )
-            ) : (
-              <p className="text-red-600">
-                {result.error}
-              </p>
+                  </div>
+                ))}
+              </div>
             )}
-          </section>
+          </div>
         )}
+
+        {/* Compare Button - Di Bawah */}
+        <div className="flex justify-center pt-4">
+          <UtilityButton onClick={handleCompare}>Compare JSON</UtilityButton>
+        </div>
       </div>
-    </main>
+
+      <PrivacyNotice />
+    </UtilityPage>
   );
 }

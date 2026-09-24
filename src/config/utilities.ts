@@ -19,8 +19,17 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Compare two JSON documents structurally. Identify added, removed, and changed values instantly. 100% processed in your browser.',
     category: 'developer',
     isClientSideOnly: true,
-    relatedUtilities: [], // Akan diisi saat kita tambah utility baru (misal: json-formatter)
-    status: 'live', // <-- DIUBAH DARI 'preview' MENJADI 'live'
+    relatedUtilities: ['json-formatter'],
+    status: 'live',
+  },
+  'json-formatter': {
+    id: 'json-formatter',
+    title: 'JSON Formatter & Minifier',
+    description: 'Beautify or compress your JSON data instantly. Format, validate, and minify JSON directly in your browser.',
+    category: 'developer',
+    isClientSideOnly: true,
+    relatedUtilities: ['json-diff'],
+    status: 'live',
   },
 };
 
