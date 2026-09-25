@@ -7,6 +7,8 @@ import UtilityHeader from "@/components/utility/utility-header";
 import UtilityEditor from "@/components/utility/utility-editor";
 import UtilityButton from "@/components/utility/utility-button";
 import PrivacyNotice from "@/components/utility/privacy-notice";
+import KnowledgeSection from "@/components/utility/knowledge-section";
+import { jsonDiffKnowledge } from "@/content/utilities/json-diff";
 
 export default function JsonDiffPage() {
   const [before, setBefore] = useState('');
@@ -28,25 +30,25 @@ export default function JsonDiffPage() {
 
   return (
     <UtilityPage>
-      <UtilityHeader 
-        title="JSON Diff & Compare" 
-        description="Compare two JSON documents structurally. Identify added, removed, and changed values instantly." 
+      <UtilityHeader
+        title="JSON Diff & Compare"
+        description="Compare two JSON documents structurally. Identify added, removed, and changed values instantly."
       />
 
       <div className="space-y-6">
         {/* Input Editors */}
         <div className="grid gap-6 md:grid-cols-2">
-          <UtilityEditor 
-            label="JSON A (Before)" 
-            placeholder="Paste first JSON here..." 
-            value={before} 
-            onChange={(e) => setBefore(e.target.value)} 
+          <UtilityEditor
+            label="JSON A (Before)"
+            placeholder="Paste first JSON here..."
+            value={before}
+            onChange={(e) => setBefore(e.target.value)}
           />
-          <UtilityEditor 
-            label="JSON B (After)" 
-            placeholder="Paste second JSON here..." 
-            value={after} 
-            onChange={(e) => setAfter(e.target.value)} 
+          <UtilityEditor
+            label="JSON B (After)"
+            placeholder="Paste second JSON here..."
+            value={after}
+            onChange={(e) => setAfter(e.target.value)}
           />
         </div>
 
@@ -101,6 +103,7 @@ export default function JsonDiffPage() {
       </div>
 
       <PrivacyNotice />
+      <KnowledgeSection {...jsonDiffKnowledge} />
     </UtilityPage>
   );
 }
