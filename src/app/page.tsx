@@ -130,12 +130,10 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <p className="mt-8 text-xs text-zinc-400">
-            &copy; {new Date().getFullYear()} BUMIVERSA. Built for the global web.
-          </p>
         </div>
 
       </div>
     </main>
   );
 }
+
