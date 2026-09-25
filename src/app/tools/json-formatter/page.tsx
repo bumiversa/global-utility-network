@@ -7,6 +7,8 @@ import UtilityHeader from '@/components/utility/utility-header';
 import UtilityEditor from '@/components/utility/utility-editor';
 import UtilityButton from '@/components/utility/utility-button';
 import PrivacyNotice from '@/components/utility/privacy-notice';
+import KnowledgeSection from '@/components/utility/knowledge-section';
+import { jsonFormatterKnowledge } from '@/content/utilities/json-formatter';
 
 export default function JsonFormatterPage() {
   const [input, setInput] = useState('');
@@ -75,7 +77,6 @@ export default function JsonFormatterPage() {
             placeholder="Result will appear here..." 
             value={output} 
             readOnly 
-            
             actionButton={output ? (
               <button onClick={handleCopy} className="text-xs font-medium text-zinc-600 hover:text-zinc-900">
                 {copied ? 'Copied!' : 'Copy to Clipboard'}
@@ -100,6 +101,7 @@ export default function JsonFormatterPage() {
       </div>
 
       <PrivacyNotice />
+      <KnowledgeSection {...jsonFormatterKnowledge} />
     </UtilityPage>
   );
 }
