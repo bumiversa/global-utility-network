@@ -19,7 +19,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Compare two JSON documents structurally. Identify added, removed, and changed values instantly.',
     category: 'developer',
     isClientSideOnly: true,
-    relatedUtilities: ['json-formatter'],
+    relatedUtilities: ['json-formatter', 'jwt-inspector'],
     status: 'live',
   },
   'json-formatter': {
@@ -37,7 +37,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Inspect a JSON Web Token locally in your browser. Decode header, payload, and claims without sending data to any server.',
     category: 'developer',
     isClientSideOnly: true,
-    relatedUtilities: ['json-diff', 'json-formatter'],
+    relatedUtilities: ['base64'],
+    status: 'live',
+  },
+  'base64': {
+    id: 'base64',
+    title: 'Base64 Encoder & Decoder',
+    description: 'Encode and decode text to Base64 or Base64URL instantly with full UTF-8 support. 100% client-side.',
+    category: 'developer',
+    isClientSideOnly: true,
+    relatedUtilities: ['jwt-inspector'],
     status: 'live',
   },
 };
