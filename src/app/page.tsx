@@ -1,72 +1,123 @@
-import Link from 'next/link';
-import { UTILITIES, type UtilityCategory } from '@/config/utilities';
+"use client";
 
-// Helper untuk mendapatkan warna badge berdasarkan kategori
-function getCategoryColor(category: UtilityCategory) {
-  switch (category) {
-    case 'developer': return 'bg-blue-50 text-blue-700 ring-blue-700/10';
-    case 'text': return 'bg-emerald-50 text-emerald-700 ring-emerald-700/10';
-    case 'image': return 'bg-purple-50 text-purple-700 ring-purple-700/10';
-    case 'calculator': return 'bg-amber-50 text-amber-700 ring-amber-700/10';
-    case 'generator': return 'bg-pink-50 text-pink-700 ring-pink-700/10';
-    default: return 'bg-zinc-100 text-zinc-700 ring-zinc-700/10';
-  }
-}
+import { useState, useMemo } from "react";
+import Link from "next/link";
+import { UTILITIES, type UtilityCategory } from "@/config/utilities";
 
 export default function Home() {
-  // Hanya tampilkan utility yang statusnya 'live'
-  const liveUtilities = Object.values(UTILITIES).filter((u) => u.status === 'live');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState<UtilityCategory | "all">("all");
+
+  // Client-side filtering (Privacy-first: no server requests)
+  const filteredUtilities = useMemo(() => {
+    return Object.values(UTILITIES).filter((utility) => {
+      const matchesSearch = 
+        utility.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        utility.description.toLowerCase().includes(searchQuery.toLowerCase());
+      
+      const matchesCategory = activeCategory === "all" || utility.category === activeCategory;
+
+      return utility.status === "live" && matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, activeCategory]);
+
+  const categories: (UtilityCategory | "all")[] = ["all", "developer", "text", "image", "calculator", "generator"];
+
+  function getCategoryLabel(cat: UtilityCategory | "all") {
+    if (cat === "all") return "All Utilities";
+    return cat.charAt(0).toUpperCase() + cat.slice(1);
+  }
 
   return (
     <main className="min-h-screen bg-white text-zinc-950">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         
-        {/* Header Section */}
-        <div className="mb-12 text-center">
+        {/* 1. Hero & Search-First Section */}
+        <div className="mb-10 text-center">
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
             BUMIVERSA
           </h1>
           <p className="mt-3 text-xl font-medium text-zinc-600">
             Global Utility Network
           </p>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-zinc-500">
-            A curated collection of privacy-first, browser-based utilities. 
-            No uploads, no tracking, 100% client-side processing.
-          </p>
-        </div>
-
-        {/* Utilities Grid */}
-        <div className="grid gap-6 sm:grid-cols-2">
-          {liveUtilities.map((utility) => (
-            <Link 
-              key={utility.id} 
-              href={`/tools/${utility.id}`}
-              className="group relative flex flex-col rounded-xl border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-400 hover:shadow-sm"
-            >
-              <div className="flex items-start justify-between">
-                <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${getCategoryColor(utility.category)}`}>
-                  {utility.category.charAt(0).toUpperCase() + utility.category.slice(1)}
-                </span>
-                <svg className="h-5 w-5 text-zinc-400 transition-transform group-hover:translate-x-1 group-hover:text-zinc-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          
+          <div className="mx-auto mt-8 max-w-2xl">
+            <div className="relative">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                <svg className="h-5 w-5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
-              
-              <h2 className="mt-4 text-xl font-semibold text-zinc-900">
-                {utility.title}
-              </h2>
-              <p className="mt-2 flex-1 text-sm leading-6 text-zinc-600">
-                {utility.description}
-              </p>
+              <input
+                type="text"
+                placeholder="What do you want to do? (e.g., JSON, Base64, JWT...)"
+                className="block w-full rounded-xl border border-zinc-200 bg-zinc-50 py-4 pl-12 pr-4 text-zinc-900 placeholder-zinc-400 outline-none transition focus:border-zinc-400 focus:ring-2 focus:ring-zinc-200"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+          </div>
+        </div>
 
-              <div className="mt-4 flex items-center text-sm font-medium text-zinc-900">
-                Open Utility
-              </div>
-            </Link>
+        {/* 2. Category Filter Pills */}
+        <div className="mb-8 flex flex-wrap justify-center gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                activeCategory === cat
+                  ? "bg-zinc-900 text-white"
+                  : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
+              }`}
+            >
+              {getCategoryLabel(cat)}
+            </button>
           ))}
         </div>
 
-        {/* Footer / Privacy Baseline */}
+        {/* 3. Dynamic Toolshelf Grid */}
+        <div className="space-y-6">
+          {filteredUtilities.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-zinc-200 bg-zinc-50 py-12 text-center">
+              <p className="text-zinc-500">No utilities found matching &quot;{searchQuery}&quot;.</p>
+              <button 
+                onClick={() => { setSearchQuery(""); setActiveCategory("all"); }}
+                className="mt-2 text-sm font-medium text-zinc-900 underline underline-offset-4"
+              >
+                Clear filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredUtilities.map((utility) => (
+                <Link 
+                  key={utility.id} 
+                  href={`/tools/${utility.id}`}
+                  className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:border-zinc-400 hover:shadow-sm"
+                >
+                  <div className="flex items-start justify-between">
+                    <span className="inline-flex items-center rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 ring-1 ring-inset ring-zinc-700/10">
+                      {utility.category}
+                    </span>
+                    <svg className="h-5 w-5 text-zinc-300 transition-transform group-hover:translate-x-1 group-hover:text-zinc-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  
+                  <h2 className="mt-3 text-lg font-semibold text-zinc-900">
+                    {utility.title}
+                  </h2>
+                  <p className="mt-2 flex-1 text-sm leading-6 text-zinc-600">
+                    {utility.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* 4. Privacy Baseline Footer */}
         <div className="mt-16 border-t border-zinc-100 pt-8 text-center">
           <div className="mx-auto flex max-w-md items-start gap-3 rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-left">
             <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
