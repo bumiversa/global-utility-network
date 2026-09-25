@@ -42,7 +42,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     isClientSideOnly: true,
     relatedUtilities: ['base64'],
     status: 'live',
-    knowledgeId: 'jwt-inspector', // <-- Ditambahkan
+    knowledgeId: 'jwt-inspector',
   },
   'base64': {
     id: 'base64',
@@ -62,6 +62,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     isClientSideOnly: true,
     relatedUtilities: [],
     status: 'live',
+    knowledgeId: 'text-cleaner', // <-- Ditambahkan
   },
 };
 

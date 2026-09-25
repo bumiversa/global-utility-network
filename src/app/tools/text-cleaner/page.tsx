@@ -7,6 +7,8 @@ import UtilityHeader from "@/components/utility/utility-header";
 import UtilityEditor from "@/components/utility/utility-editor";
 import UtilityButton from "@/components/utility/utility-button";
 import PrivacyNotice from "@/components/utility/privacy-notice";
+import KnowledgeSection from "@/components/utility/knowledge-section";
+import { textCleanerKnowledge } from "@/content/utilities/text-cleaner";
 
 export default function TextCleanerPage() {
   const [input, setInput] = useState("");
@@ -14,7 +16,6 @@ export default function TextCleanerPage() {
   const [stats, setStats] = useState<{ original: number; cleaned: number; duplicates: number; empty: number } | null>(null);
   const [copied, setCopied] = useState(false);
 
-  // Options state
   const [removeDuplicates, setRemoveDuplicates] = useState(true);
   const [trimLines, setTrimLines] = useState(true);
   const [removeEmptyLines, setRemoveEmptyLines] = useState(true);
@@ -65,7 +66,6 @@ export default function TextCleanerPage() {
       />
 
       <div className="space-y-6">
-        {/* Options Toggles */}
         <div className="flex flex-wrap justify-center gap-4 rounded-xl border border-zinc-200 bg-zinc-50 p-4">
           <label className="flex items-center gap-2 text-sm font-medium text-zinc-700 cursor-pointer">
             <input type="checkbox" checked={removeDuplicates} onChange={(e) => setRemoveDuplicates(e.target.checked)} className="rounded border-zinc-300 text-zinc-900 focus:ring-zinc-500" />
@@ -85,7 +85,6 @@ export default function TextCleanerPage() {
           </label>
         </div>
 
-        {/* Editors */}
         <div className="grid gap-6 md:grid-cols-2">
           <UtilityEditor
             label="Input Text"
@@ -106,7 +105,6 @@ export default function TextCleanerPage() {
           />
         </div>
 
-        {/* Stats & Controls */}
         {stats && (
           <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-600">
             <div className="flex gap-4">
@@ -130,6 +128,7 @@ export default function TextCleanerPage() {
       </div>
 
       <PrivacyNotice />
+      <KnowledgeSection {...textCleanerKnowledge} />
     </UtilityPage>
   );
 }
