@@ -7,6 +7,8 @@ import UtilityHeader from "@/components/utility/utility-header";
 import UtilityEditor from "@/components/utility/utility-editor";
 import UtilityButton from "@/components/utility/utility-button";
 import PrivacyNotice from "@/components/utility/privacy-notice";
+import KnowledgeSection from "@/components/utility/knowledge-section";
+import { jwtInspectorKnowledge } from "@/content/utilities/jwt-inspector";
 
 export default function JwtInspectorPage() {
   const [token, setToken] = useState("");
@@ -46,11 +48,8 @@ export default function JwtInspectorPage() {
             ) : (
               <>
                 <JsonSection title="Header" value={result.header} />
-
                 <JsonSection title="Payload" value={result.payload} />
-
                 <ClaimsSection result={result} />
-
                 <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6">
                   <h2 className="text-base font-semibold text-zinc-900">
                     Signature
@@ -69,6 +68,7 @@ export default function JwtInspectorPage() {
       </div>
 
       <PrivacyNotice />
+      <KnowledgeSection {...jwtInspectorKnowledge} />
     </UtilityPage>
   );
 }
@@ -129,7 +129,6 @@ function ClaimsSection({
   return (
     <section className="rounded-xl border border-zinc-200 bg-zinc-50 p-6">
       <h2 className="text-base font-semibold text-zinc-900">Claims</h2>
-
       {rows.length === 0 ? (
         <p className="mt-4 text-sm text-zinc-600">
           No recognized standard claims found.

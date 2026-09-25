@@ -32,7 +32,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     isClientSideOnly: true,
     relatedUtilities: ['json-diff'],
     status: 'live',
-    knowledgeId: 'json-formatter', // <-- Hanya 1 baris ini yang ditambahkan
+    knowledgeId: 'json-formatter',
   },
   'jwt-inspector': {
     id: 'jwt-inspector',
@@ -42,6 +42,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     isClientSideOnly: true,
     relatedUtilities: ['base64'],
     status: 'live',
+    knowledgeId: 'jwt-inspector', // <-- Ditambahkan
   },
   'base64': {
     id: 'base64',
