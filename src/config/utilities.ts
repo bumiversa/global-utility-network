@@ -49,6 +49,15 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     relatedUtilities: ['jwt-inspector'],
     status: 'live',
   },
+  'text-cleaner': {
+    id: 'text-cleaner',
+    title: 'Text Cleaner & Deduplicator',
+    description: 'Remove duplicate lines, trim whitespace, and sort text lists instantly. Perfect for emails, URLs, and data cleanup.',
+    category: 'text',
+    isClientSideOnly: true,
+    relatedUtilities: [],
+    status: 'live',
+  },
 };
 
 export function getUtility(id: string): UtilityConfig | undefined {
