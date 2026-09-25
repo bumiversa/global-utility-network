@@ -2,8 +2,25 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BUMIVERSA | Global Utility Network",
-  description: "Building privacy-first, browser-based utilities for the world. No uploads, no tracking, 100% client-side.",
+  title: {
+    default: "BUMIVERSA | Global Utility Network",
+    template: "%s | BUMIVERSA",
+  },
+  description: "A curated collection of privacy-first, browser-based utilities. No uploads, no tracking, 100% client-side processing.",
+  keywords: ["free online tools", "json formatter", "base64 decoder", "jwt inspector", "text cleaner", "privacy first tools"],
+  authors: [{ name: "BUMIVERSA" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://bumiversa.dev",
+    siteName: "BUMIVERSA Global Utility Network",
+    title: "BUMIVERSA | Global Utility Network",
+    description: "Privacy-first, browser-based utilities for the world.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -13,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className="antialiased bg-white text-zinc-950">
         {children}
       </body>
     </html>
