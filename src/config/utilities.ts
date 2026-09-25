@@ -10,6 +10,7 @@ export interface UtilityConfig {
   isClientSideOnly: boolean;
   relatedUtilities: string[];
   status: 'live' | 'preview' | 'coming-soon';
+  knowledgeId?: string; // <-- Tambahan baru
 }
 
 export const UTILITIES: Record<string, UtilityConfig> = {
@@ -48,6 +49,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     isClientSideOnly: true,
     relatedUtilities: ['jwt-inspector'],
     status: 'live',
+    knowledgeId: 'base64', // <-- Penunjuk ke konten
   },
   'text-cleaner': {
     id: 'text-cleaner',

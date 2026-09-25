@@ -1,5 +1,8 @@
 'use client';
 
+import KnowledgeSection from '@/components/utility/knowledge-section';
+import { base64Knowledge } from '@/content/utilities/base64';
+
 import { useState } from 'react';
 import { encodeBase64, decodeBase64, encodeBase64Url, decodeBase64Url } from '@/lib/base64/transform';
 import UtilityPage from '@/components/utility/utility-page';
@@ -111,6 +114,9 @@ export default function Base64Page() {
       </div>
 
       <PrivacyNotice />
+      <KnowledgeSection {...base64Knowledge} />
     </UtilityPage>
   );
 }
+
+
