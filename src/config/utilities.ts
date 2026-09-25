@@ -60,9 +60,19 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Remove duplicate lines, trim whitespace, and sort text lists instantly. Perfect for emails, URLs, and data cleanup.',
     category: 'text',
     isClientSideOnly: true,
-    relatedUtilities: [],
+    relatedUtilities: ['word-counter'],
     status: 'live',
-    knowledgeId: 'text-cleaner', // <-- Ditambahkan
+    knowledgeId: 'text-cleaner',
+  },
+  'word-counter': {
+    id: 'word-counter',
+    title: 'Word & Character Counter',
+    description: 'Analyze text instantly. Get accurate counts for characters, words, and lines directly in your browser.',
+    category: 'text',
+    isClientSideOnly: true,
+    relatedUtilities: ['text-cleaner'],
+    status: 'live',
+    knowledgeId: 'word-counter',
   },
 };
 
