@@ -18,23 +18,26 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-zinc-900">2. Client-Side Utilities</h2>
+          <h2 className="text-xl font-semibold text-zinc-900">2. Client-Side Utility Processing</h2>
           <p className="mt-2">
-            The core utility set is designed so that user-provided data (such as text, JSON, or images) is processed directly in your browser. These utilities do not require a BUMIVERSA server to perform their core transformations.
+            The core utility set is designed so that user-provided data (such as text, JSON, or images) is processed directly in your browser. These utilities do not require a BUMIVERSA server to perform their core transformations, and this data is not sent to our servers.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-zinc-900">3. Analytics and Cookies</h2>
+          <h2 className="text-xl font-semibold text-zinc-900">3. Analytics and Consent Mode</h2>
           <p className="mt-2">
-            We use Google Analytics to understand how visitors interact with our utilities. This service may use cookies to collect anonymous usage data, such as page views and session duration. This helps us improve the Global Utility Network. You can opt-out of Google Analytics tracking through your browser settings or by using the Google Analytics Opt-out Browser Add-on.
+            We use Google Analytics to understand how visitors interact with our site, and we implement Google Consent Mode to respect your privacy choices.
+          </p>
+          <p className="mt-2">
+            By default, we deny consent for analytics and advertising storage. In this state, Google may process limited, cookieless signals to provide basic site measurement. If you explicitly click &quot;Accept Analytics&quot; on our consent banner, we update your consent status, allowing Google to use cookies and collect full measurement data. You can change your choice at any time by clearing your browser&apos;s local storage for this site.
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-zinc-900">4. Future Services</h2>
           <p className="mt-2">
-            In the future, we may integrate additional third-party services, such as advertising networks. If we do, we will update this policy to clearly disclose what data is collected, how it is used, and your rights regarding that data.
+            In the future, we may integrate additional third-party services, such as advertising networks (e.g., Google AdSense). If we do, we will update this policy and our consent mechanisms to clearly disclose how data is used for those specific services.
           </p>
         </section>
 

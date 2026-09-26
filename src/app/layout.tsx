@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import SiteHeader from "@/components/site/site-header";
 import SiteFooter from "@/components/site/site-footer";
+import ConsentBanner from "@/components/site/consent-banner";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -71,6 +72,15 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+// Default consent: denied until user explicitly accepts via banner
+gtag('consent', 'default', {
+  'analytics_storage': 'denied',
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'wait_for_update': 500
+});
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-QMKFHW1C4B', {
@@ -84,6 +94,7 @@ export default function RootLayout({
           {children}
         </main>
         <SiteFooter />
+        <ConsentBanner />
       </body>
     </html>
   );
