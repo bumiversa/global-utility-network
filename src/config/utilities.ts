@@ -114,6 +114,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     status: 'live',
     knowledgeId: 'unit-converter',
   },
+  'timestamp-converter': {
+    id: 'timestamp-converter',
+    title: 'Epoch / Unix Timestamp Converter',
+    description: 'Convert between Unix timestamps and human-readable dates. Your inputs are processed locally in your browser.',
+    category: 'developer',
+    isClientSideOnly: true,
+    relatedUtilities: ['json-formatter', 'jwt-inspector'],
+    status: 'live',
+    knowledgeId: 'timestamp-converter',
+  },
 };
 
 export function getUtility(id: string): UtilityConfig | undefined {
