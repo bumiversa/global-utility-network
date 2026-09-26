@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Privacy Policy",
-  description: "Understand how BUMIVERSA handles data, privacy, and future service integrations.",
+  description: "Understand how BUMIVERSA handles data, privacy, and service integrations.",
 };
 
 export default function PrivacyPage() {
@@ -18,24 +18,23 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-zinc-900">2. Current State: Client-Side Utilities</h2>
+          <h2 className="text-xl font-semibold text-zinc-900">2. Client-Side Utilities</h2>
           <p className="mt-2">
-            The current utility set is designed so that user-provided data is processed directly in the browser. These utilities do not require a BUMIVERSA server to perform their core transformations.
+            The core utility set is designed so that user-provided data (such as text, JSON, or images) is processed directly in your browser. These utilities do not require a BUMIVERSA server to perform their core transformations.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-zinc-900">3. Future Services and Data Collection</h2>
+          <h2 className="text-xl font-semibold text-zinc-900">3. Analytics and Cookies</h2>
           <p className="mt-2">
-            Please note that the specific data handling of each service may differ. In the future, we may integrate third-party services such as analytics platforms, advertising networks, or server-side features. 
-            If we do, we will update this policy to clearly disclose what data is collected, how it is used, and your rights regarding that data.
+            We use Google Analytics to understand how visitors interact with our utilities. This service may use cookies to collect anonymous usage data, such as page views and session duration. This helps us improve the Global Utility Network. You can opt-out of Google Analytics tracking through your browser settings or by using the Google Analytics Opt-out Browser Add-on.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-zinc-900">4. Cookies and Local Storage</h2>
+          <h2 className="text-xl font-semibold text-zinc-900">4. Future Services</h2>
           <p className="mt-2">
-            Currently, we do not use tracking cookies. Any future use of cookies for analytics or advertising will be disclosed here and managed via a consent mechanism where required by law.
+            In the future, we may integrate additional third-party services, such as advertising networks. If we do, we will update this policy to clearly disclose what data is collected, how it is used, and your rights regarding that data.
           </p>
         </section>
 

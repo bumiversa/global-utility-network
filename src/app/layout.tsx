@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import SiteHeader from "@/components/site/site-header";
 import SiteFooter from "@/components/site/site-footer";
 import "./globals.css";
@@ -43,12 +44,12 @@ export const metadata: Metadata = {
     title: "BUMIVERSA | Global Utility Network",
     description: "Privacy-first, browser-based utilities for the world.",
   },
+  other: {
+    'google-adsense-account': 'ca-pub-2917362809005147',
+  },
   robots: {
     index: true,
     follow: true,
-  },
-  other: {
-    'google-adsense-account': 'ca-pub-2917362809005147',
   },
 };
 
@@ -60,6 +61,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col bg-white text-zinc-950 antialiased">
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-QMKFHW1C4B"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-QMKFHW1C4B', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
         <SiteHeader />
         <main className="flex-1">
           {children}

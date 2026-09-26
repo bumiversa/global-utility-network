@@ -94,6 +94,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     status: 'live',
     knowledgeId: 'qr-code-generator',
   },
+  'color-converter': {
+    id: 'color-converter',
+    title: 'Color Converter',
+    description: 'Convert colors between HEX, RGB, and HSL formats instantly. 100% client-side.',
+    category: 'developer',
+    isClientSideOnly: true,
+    relatedUtilities: [],
+    status: 'live',
+    knowledgeId: 'color-converter',
+  },
 };
 
 export function getUtility(id: string): UtilityConfig | undefined {
