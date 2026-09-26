@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     default: "BUMIVERSA | Global Utility Network",
     template: "%s | BUMIVERSA",
   },
-  description: "A curated collection of privacy-first, browser-based utilities. No uploads, no tracking, 100% client-side processing.",
+  description: "A curated collection of privacy-first, browser-based utilities. Core data processing happens locally in your browser, while anonymous site usage is measured to improve our tools.",
   keywords: ["free online tools", "json formatter", "base64 decoder", "jwt inspector", "text cleaner", "privacy first tools"],
   authors: [{ name: "BUMIVERSA" }],
   icons: {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: "https://bumiversa.dev",
     siteName: "BUMIVERSA Global Utility Network",
     title: "BUMIVERSA | Global Utility Network",
-    description: "Privacy-first, browser-based utilities for the world.",
+    description: "Core data processing happens locally. Anonymous site usage is measured to improve our tools.",
     images: [
       {
         url: "/bumiversa-og.png",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "BUMIVERSA | Global Utility Network",
-    description: "Privacy-first, browser-based utilities for the world.",
+    description: "Core data processing happens locally. Anonymous site usage is measured to improve our tools.",
   },
   other: {
     'google-adsense-account': 'ca-pub-2917362809005147',
