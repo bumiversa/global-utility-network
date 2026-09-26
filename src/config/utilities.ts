@@ -84,6 +84,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     status: 'live',
     knowledgeId: 'image-resizer',
   },
+  'qr-code-generator': {
+    id: 'qr-code-generator',
+    title: 'QR Code Generator',
+    description: 'Generate a high-quality QR code from any text or URL instantly. 100% client-side, no data leaves your browser.',
+    category: 'generator',
+    isClientSideOnly: true,
+    relatedUtilities: [],
+    status: 'live',
+    knowledgeId: 'qr-code-generator',
+  },
 };
 
 export function getUtility(id: string): UtilityConfig | undefined {
