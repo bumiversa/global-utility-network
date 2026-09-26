@@ -104,6 +104,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     status: 'live',
     knowledgeId: 'color-converter',
   },
+  'unit-converter': {
+    id: 'unit-converter',
+    title: 'Unit Converter',
+    description: 'Convert common length and weight units instantly. Your measurements are processed locally in your browser.',
+    category: 'calculator',
+    isClientSideOnly: true,
+    relatedUtilities: [],
+    status: 'live',
+    knowledgeId: 'unit-converter',
+  },
 };
 
 export function getUtility(id: string): UtilityConfig | undefined {
