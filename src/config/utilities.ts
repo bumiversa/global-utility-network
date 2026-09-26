@@ -74,6 +74,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     status: 'live',
     knowledgeId: 'word-counter',
   },
+  'image-resizer': {
+    id: 'image-resizer',
+    title: 'Image Resizer & Compressor',
+    description: 'Resize and compress JPG, PNG, and WEBP images directly in your browser. No uploads, fast and private.',
+    category: 'image',
+    isClientSideOnly: true,
+    relatedUtilities: [],
+    status: 'live',
+    knowledgeId: 'image-resizer',
+  },
 };
 
 export function getUtility(id: string): UtilityConfig | undefined {
