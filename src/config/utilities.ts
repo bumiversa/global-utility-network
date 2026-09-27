@@ -110,7 +110,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Convert common length and weight units instantly. Your measurements are processed locally in your browser.',
     category: 'calculator',
     isClientSideOnly: true,
-    relatedUtilities: [],
+    relatedUtilities: ['base-number-converter'],
     status: 'live',
     knowledgeId: 'unit-converter',
   },
@@ -153,6 +153,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     relatedUtilities: ['text-cleaner', 'word-counter'],
     status: 'live',
     knowledgeId: 'text-case-converter',
+  },
+  'base-number-converter': {
+    id: 'base-number-converter',
+    title: 'Base Number Converter',
+    description: 'Convert integers between Binary, Octal, Decimal, and Hexadecimal instantly. Supports arbitrary-precision integers. 100% client-side.',
+    category: 'calculator',
+    isClientSideOnly: true,
+    relatedUtilities: ['unit-converter'],
+    status: 'live',
+    knowledgeId: 'base-number-converter',
   },
 };
 
