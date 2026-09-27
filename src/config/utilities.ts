@@ -124,6 +124,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     status: 'live',
     knowledgeId: 'timestamp-converter',
   },
+  'secure-random-generator': {
+    id: 'secure-random-generator',
+    title: 'Secure Random Generator',
+    description: 'Generate cryptographically secure random values using your browser Web Crypto API. Values are generated locally and not stored.',
+    category: 'generator',
+    isClientSideOnly: true,
+    relatedUtilities: ['qr-code-generator'],
+    status: 'live',
+    knowledgeId: 'secure-random-generator',
+  },
 };
 
 export function getUtility(id: string): UtilityConfig | undefined {
