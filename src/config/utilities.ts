@@ -130,7 +130,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Generate cryptographically secure random values using your browser Web Crypto API. Values are generated locally and not stored.',
     category: 'generator',
     isClientSideOnly: true,
-    relatedUtilities: ['qr-code-generator', 'hash-generator'],
+    relatedUtilities: ['qr-code-generator', 'hash-generator', 'password-generator'],
     status: 'live',
     knowledgeId: 'secure-random-generator',
   },
@@ -183,6 +183,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     relatedUtilities: ['base64', 'json-formatter', 'qr-code-generator'],
     status: 'live',
     knowledgeId: 'url-parser',
+  },
+  'password-generator': {
+    id: 'password-generator',
+    title: 'Password Generator',
+    description: 'Generate cryptographically secure, unbiased passwords entirely in your browser. No storage, no transmission.',
+    category: 'generator',
+    isClientSideOnly: true,
+    relatedUtilities: ['secure-random-generator', 'hash-generator'],
+    status: 'live',
+    knowledgeId: 'password-generator',
   },
 };
 
