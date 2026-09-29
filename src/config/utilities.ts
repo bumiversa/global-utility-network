@@ -30,7 +30,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Beautify or compress your JSON data instantly. Format, validate, and minify JSON directly in your browser.',
     category: 'developer',
     isClientSideOnly: true,
-    relatedUtilities: ['json-diff', 'url-parser'],
+    relatedUtilities: ['json-diff', 'url-parser', 'csv-json'],
     status: 'live',
     knowledgeId: 'json-formatter',
   },
@@ -233,6 +233,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     relatedUtilities: ['json-diff', 'text-cleaner'],
     status: 'live',
     knowledgeId: 'text-diff',
+  },
+  'csv-json': {
+    id: 'csv-json',
+    title: 'CSV ↔ JSON Converter',
+    description: 'Convert CSV data to JSON and vice versa with strict RFC 4180-style validation. 100% client-side.',
+    category: 'developer',
+    isClientSideOnly: true,
+    relatedUtilities: ['json-formatter', 'text-cleaner'],
+    status: 'live',
+    knowledgeId: 'csv-json',
   },
 };
 
