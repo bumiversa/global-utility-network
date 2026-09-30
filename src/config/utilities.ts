@@ -100,7 +100,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Convert colors between HEX, RGB, and HSL formats instantly. 100% client-side.',
     category: 'developer',
     isClientSideOnly: true,
-    relatedUtilities: [],
+    relatedUtilities: ['color-contrast'],
     status: 'live',
     knowledgeId: 'color-converter',
   },
@@ -253,6 +253,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     relatedUtilities: ['image-resizer', 'image-format-converter', 'favicon-generator'],
     status: 'live',
     knowledgeId: 'image-metadata',
+  },
+  'color-contrast': {
+    id: 'color-contrast',
+    title: 'Color Contrast Checker',
+    description: 'Calculate the contrast ratio between two colors and verify WCAG 2.x accessibility compliance. 100% client-side.',
+    category: 'developer',
+    isClientSideOnly: true,
+    relatedUtilities: ['color-converter'],
+    status: 'live',
+    knowledgeId: 'color-contrast',
   },
 };
 
