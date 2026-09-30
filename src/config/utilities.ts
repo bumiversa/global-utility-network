@@ -180,7 +180,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Parse, inspect, and manipulate URL structures and query parameters instantly. 100% client-side, no network requests.',
     category: 'developer',
     isClientSideOnly: true,
-    relatedUtilities: ['base64', 'json-formatter', 'qr-code-generator'],
+    relatedUtilities: ['base64', 'json-formatter', 'qr-code-generator', 'url-encoder'],
     status: 'live',
     knowledgeId: 'url-parser',
   },
@@ -263,6 +263,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     relatedUtilities: ['color-converter'],
     status: 'live',
     knowledgeId: 'color-contrast',
+  },
+  'url-encoder': {
+    id: 'url-encoder',
+    title: 'URL Encoder / Decoder',
+    description: 'Transform text into safe URI components and vice versa. 100% client-side.',
+    category: 'developer',
+    isClientSideOnly: true,
+    relatedUtilities: ['url-parser'],
+    status: 'live',
+    knowledgeId: 'url-encoder',
   },
 };
 
