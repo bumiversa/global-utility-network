@@ -60,7 +60,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Remove duplicate lines, trim whitespace, and sort text lists instantly. Perfect for emails, URLs, and data cleanup.',
     category: 'text',
     isClientSideOnly: true,
-    relatedUtilities: ['word-counter', 'text-case-converter', 'text-diff'],
+    relatedUtilities: ['word-counter', 'text-case-converter', 'text-diff', 'regex-tester'],
     status: 'live',
     knowledgeId: 'text-cleaner',
   },
@@ -273,6 +273,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     relatedUtilities: ['url-parser'],
     status: 'live',
     knowledgeId: 'url-encoder',
+  },
+  'regex-tester': {
+    id: 'regex-tester',
+    title: 'Regex Tester',
+    description: 'Test regular expressions and inspect matches with capture groups. 100% client-side.',
+    category: 'developer',
+    isClientSideOnly: true,
+    relatedUtilities: ['text-cleaner', 'url-parser'],
+    status: 'live',
+    knowledgeId: 'regex-tester',
   },
 };
 
