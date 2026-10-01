@@ -170,7 +170,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Generate SHA-256 and SHA-512 cryptographic hashes from text instantly. UTF-8 encoded, 100% client-side using Web Crypto API.',
     category: 'developer',
     isClientSideOnly: true,
-    relatedUtilities: ['base64', 'jwt-inspector', 'secure-random-generator', 'uuid-generator'],
+    relatedUtilities: ['base64', 'jwt-inspector', 'secure-random-generator', 'uuid-generator', 'file-hash'],
     status: 'live',
     knowledgeId: 'hash-generator',
   },
@@ -283,6 +283,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     relatedUtilities: ['text-cleaner', 'url-parser'],
     status: 'live',
     knowledgeId: 'regex-tester',
+  },
+  'file-hash': {
+    id: 'file-hash',
+    title: 'File Hash Inspector',
+    description: 'Calculate SHA-256, SHA-384, and SHA-512 hashes for files locally in your browser. 100% client-side.',
+    category: 'developer',
+    isClientSideOnly: true,
+    relatedUtilities: ['hash-generator'],
+    status: 'live',
+    knowledgeId: 'file-hash',
   },
 };
 
