@@ -160,7 +160,7 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     description: 'Convert integers between Binary, Octal, Decimal, and Hexadecimal instantly. Supports arbitrary-precision integers. 100% client-side.',
     category: 'calculator',
     isClientSideOnly: true,
-    relatedUtilities: ['unit-converter'],
+    relatedUtilities: ['unit-converter', 'ip-subnet'],
     status: 'live',
     knowledgeId: 'base-number-converter',
   },
@@ -293,6 +293,16 @@ export const UTILITIES: Record<string, UtilityConfig> = {
     relatedUtilities: ['hash-generator'],
     status: 'live',
     knowledgeId: 'file-hash',
+  },
+  'ip-subnet': {
+    id: 'ip-subnet',
+    title: 'IP Subnet Calculator',
+    description: 'Calculate network address, broadcast, and host ranges for IPv4 CIDR blocks. 100% client-side deterministic calculation.',
+    category: 'calculator',
+    isClientSideOnly: true,
+    relatedUtilities: ['base-number-converter'],
+    status: 'live',
+    knowledgeId: 'ip-subnet',
   },
 };
 
